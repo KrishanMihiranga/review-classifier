@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/main.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="split left">
+        <img src="../static/products/prod1.png" alt="Product Image">
+    </div>
+
+    <div class="split right">
+        <div class="form-section mt-5">
+            <div class="mb-3">
+                <div class="sentiment-label">Positive Sentiments: <span class="text-success">{{ data.positive }}</span>
+                </div>
+                <div class="sentiment-label">Negative Sentiments: <span class="text-danger">{{ data.negative }}</span>
+                </div>
+            </div>
+
+            <form method="post" class="mb-4">
+                <textarea name="review" placeholder="Write your thoughts here..."></textarea>
+                <button class="btn btn-primary mt-3" type="submit">Submit Review</button>
+            </form>
+
+            <div>
+                {% for review in data.reviews %}
+                <div class="review">
+                    <span>{{ review }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
